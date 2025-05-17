@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { SubstancesList } from "./SubstancesList";
 import { EnvironmentalData } from "./EnvironmentalData";
 import { LifecycleEvents } from "./LifecycleEvents";
+import { BrandPrivateData } from "./BrandPrivateData";
 
 interface ProductPassportProps {
   data: ProductPassport;
@@ -213,6 +214,11 @@ export function ProductPassport({
             </section>
           </div>
         </motion.div>
+      )}
+
+      {/* Données privées de la marque */}
+      {userRole === "brand" && connectedAddress === data.brandWalletAddress && (
+        <BrandPrivateData data={data.private} />
       )}
     </div>
   );
