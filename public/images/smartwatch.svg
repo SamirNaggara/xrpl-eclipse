@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bracelet supérieur -->
+  <path d="M150 50 L250 50 L270 100 L130 100 Z" fill="#2563eb"/>
+  
+  <!-- Corps principal de la montre -->
+  <rect x="100" y="100" width="200" height="200" rx="30" fill="#1d4ed8"/>
+  <rect x="110" y="110" width="180" height="180" rx="25" fill="#000000"/>
+  
+  <!-- Écran -->
+  <rect x="120" y="120" width="160" height="160" rx="20" fill="#1e40af"/>
+  
+  <!-- Logo XRP -->
+  <text x="200" y="200" font-size="40" fill="white" text-anchor="middle" dominant-baseline="middle">XRP</text>
+  
+  <!-- Bouton latéral -->
+  <rect x="290" y="160" width="20" height="80" rx="5" fill="#1e40af"/>
+  
+  <!-- Bracelet inférieur -->
+  <path d="M130 300 L270 300 L250 350 L150 350 Z" fill="#2563eb"/>
+</svg> 
