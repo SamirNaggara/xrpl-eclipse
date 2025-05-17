@@ -22,42 +22,127 @@ const WATCH_DATA: ProductPassportType = {
         name: "Écran AMOLED",
         supplier: "DisplayTech Solutions",
         certifications: ["ISO 9001", "RoHS", "REACH"],
+        substances: [
+          {
+            name: "Indium",
+            cas_number: "7440-74-6",
+            location: "Couche conductrice",
+            concentration: "0.01%",
+            risk_level: "low",
+            reach_status: "Autorisé",
+          },
+        ],
+        recyclingInstructions:
+          "Démontage spécifique requis pour récupération des terres rares",
       },
       {
         name: "Processeur XRPL",
         supplier: "ChipSecure",
         certifications: ["CE", "FCC"],
+        recyclingInstructions:
+          "Recyclable avec les déchets électroniques standards",
       },
       {
         name: "Batterie Li-Ion",
         supplier: "PowerTech",
         certifications: ["UL", "IEC 62133"],
+        substances: [
+          {
+            name: "Lithium",
+            cas_number: "7439-93-2",
+            location: "Cellules batterie",
+            concentration: "2%",
+            risk_level: "medium",
+            reach_status: "Déclaration obligatoire",
+          },
+        ],
+        recyclingInstructions: "À recycler via filière spécialisée batteries",
       },
     ],
     manufacturingProcess: {
       location: "Grenoble, France",
       carbonFootprint: 8.5,
       waterUsage: 180,
+      energyConsumption: 450,
+      wasteGenerated: 0.8,
     },
     qualityControls: [
       {
         date: "2024-03-18",
         inspector: "Sophie Martin",
-        result: "pass" as const,
+        result: "pass",
+        notes: "Tous les tests conformes aux spécifications",
       },
       {
         date: "2024-03-19",
         inspector: "Lucas Dubois",
-        result: "pass" as const,
-      },
-      {
-        date: "2024-03-20",
-        inspector: "Emma Bernard",
-        result: "pass" as const,
+        result: "pass",
+        notes: "Vérification finale des fonctionnalités XRPL",
       },
     ],
   },
   brandWalletAddress: "rQpsRwhrMQw8H3sja5aN4EtG3atBQWLGrh",
+  substances: [
+    {
+      name: "Lithium",
+      cas_number: "7439-93-2",
+      location: "Batterie",
+      concentration: "2%",
+      risk_level: "medium",
+      reach_status: "Déclaration obligatoire",
+    },
+    {
+      name: "Indium",
+      cas_number: "7440-74-6",
+      location: "Écran",
+      concentration: "0.01%",
+      risk_level: "low",
+      reach_status: "Autorisé",
+    },
+  ],
+  environmentalIndicators: [
+    {
+      name: "Empreinte Carbone",
+      value: "8.5",
+      unit: "kg CO2e",
+      description: "Impact carbone total du cycle de vie",
+      verificationDate: "2024-03-15",
+      verifier: "Bureau Veritas",
+    },
+    {
+      name: "Contenu Recyclé",
+      value: "45",
+      unit: "%",
+      description: "Pourcentage de matériaux recyclés",
+      verificationDate: "2024-03-15",
+      verifier: "Bureau Veritas",
+    },
+    {
+      name: "Indice de Réparabilité",
+      value: "8.5",
+      unit: "/10",
+      description: "Score selon l'indice français",
+      verificationDate: "2024-03-15",
+      verifier: "Bureau Veritas",
+    },
+  ],
+  lifecycleEvents: [
+    {
+      id: "prod_001",
+      type: "production",
+      date: "2024-03-20",
+      description: "Production initiale",
+      location: "Grenoble, France",
+      operator: "TechWear Manufacturing",
+      transactionHash: "0xabc...123",
+    },
+  ],
+  lastUpdated: "2024-03-20",
+  complianceStatus: {
+    espr: true,
+    reach: true,
+    rohs: true,
+  },
 };
 
 export default function ScanPage() {
