@@ -79,4 +79,5 @@ export interface ProductPassport {
     reach: boolean;
     rohs: boolean;
   };
+  certificationTxID?: string;
 }

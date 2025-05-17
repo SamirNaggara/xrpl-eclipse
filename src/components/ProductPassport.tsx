@@ -7,20 +7,31 @@ import { SubstancesList } from "./SubstancesList";
 import { EnvironmentalData } from "./EnvironmentalData";
 import { LifecycleEvents } from "./LifecycleEvents";
 import { BrandPrivateData } from "./BrandPrivateData";
+import { VerifyAuthenticity } from "./VerifyAuthenticity";
+import { useRouter } from "next/navigation";
 
 interface ProductPassportProps {
   data: ProductPassport;
   connectedAddress: string | null;
+  productId: string;
 }
 
 export function ProductPassport({
   data,
   connectedAddress,
+  productId,
 }: ProductPassportProps) {
+  const router = useRouter();
   const userRole = useUserRole(
     connectedAddress,
     data?.brandWalletAddress || ""
   );
+
+  const handleCertify = () => {
+    // Encoder les données du produit en base64 pour la transmission
+    const productData = Buffer.from(JSON.stringify(data)).toString("base64");
+    router.push(`/certify?data=${productData}&id=${productId}`);
+  };
 
   // Vérification si data est undefined
   if (!data) {
@@ -66,9 +77,32 @@ export function ProductPassport({
             </p>
           </div>
         </div>
-        <button className="text-green-700 hover:text-green-800 text-sm font-medium">
-          Vérifier l'authenticité →
-        </button>
+        <div className="flex items-center space-x-4">
+          <VerifyAuthenticity txID={data.certificationTxID} />
+          {connectedAddress && (
+            <button
+              onClick={handleCertify}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+              <span>
+                {data.certificationTxID ? "Recertifier" : "Certifier"}
+              </span>
+            </button>
+          )}
+        </div>
       </motion.div>
 
       {/* Informations produit */}

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Client } from "xrpl";
 
@@ -47,19 +49,25 @@ export function useXRPLWallet() {
       }
 
       // Ouvrir la fenêtre QR dans une nouvelle fenêtre
-      if (request.refs.qr_png) {
+      if (request.refs?.qr_png) {
         qrWindow = window.open("", "QR Code", "width=400,height=400");
         if (qrWindow) {
           qrWindow.document.write(`
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: white;">
-              <img src="${request.refs.qr_png}" alt="QR Code" style="max-width: 300px;" />
+              <img src="${
+                request.refs.qr_png
+              }" alt="QR Code" style="max-width: 300px;" />
               <p style="margin-top: 20px; font-family: sans-serif; color: #333;">Scannez ce QR code avec votre application XUMM</p>
-              <a href="${request.next.always}" target="_blank" style="margin-top: 10px; color: blue; text-decoration: underline;">
+              <a href="${
+                request.next?.always || ""
+              }" target="_blank" style="margin-top: 10px; color: blue; text-decoration: underline;">
                 Ouvrir dans XUMM
               </a>
             </div>
           `);
         }
+      } else {
+        throw new Error("QR code non disponible dans la réponse");
       }
 
       // Vérifier périodiquement le statut

@@ -7,7 +7,7 @@ export function WalletConnect() {
     useXRPLWallet();
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 justify-center">
       {isConnected ? (
         <>
           <div className="text-sm">

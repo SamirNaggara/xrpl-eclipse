@@ -1,3 +1,5 @@
+"use client";
+
 import { ProductPassport } from "@/components/ProductPassport";
 import { WalletConnect } from "@/components/WalletConnect";
 import { useXRPLWallet } from "@/hooks/useXRPLWallet";
@@ -45,6 +47,17 @@ const DEMO_PRODUCT: ProductPassportType = {
     ],
   },
   brandWalletAddress: "rQpsRwhrMQw8H3sja5aN4EtG3atBQWLGrh",
+  substances: [],
+  environmentalIndicators: [],
+  lifecycleEvents: [],
+  lastUpdated: "2024-03-15",
+  complianceStatus: {
+    espr: true,
+    reach: true,
+    rohs: true,
+  },
+  certificationTxID:
+    "A8AB75A0BEC689B80480634D98333080C3144EE004B66E55D42B497B585319D7",
 };
 
 export default function Home() {
@@ -57,7 +70,11 @@ export default function Home() {
           <WalletConnect />
         </div>
 
-        <ProductPassport data={DEMO_PRODUCT} connectedAddress={address} />
+        <ProductPassport
+          data={DEMO_PRODUCT}
+          connectedAddress={address}
+          productId="demo001"
+        />
       </div>
     </main>
   );

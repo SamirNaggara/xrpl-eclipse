@@ -1,26 +1,22 @@
 import { NextResponse } from "next/server";
 import { XummSdk } from "xumm-sdk";
+import { XAMAN_API_KEY, XAMAN_SECRET } from "@/config/xaman";
 
-const xumm = new XummSdk(
-  "ffe37e7d-cb32-4011-abe5-c0591cc4a7a1",
-  "1885fe62-b212-4212-b40c-2f70ab0a92b7"
-);
+const xumm = new XummSdk(XAMAN_API_KEY, XAMAN_SECRET);
 
 export async function POST(request: Request) {
   try {
-    const payload = await xumm.payload.create({
-      txjson: {
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      // Si pas de body, créer une demande de connexion simple
+      body = {
         TransactionType: "SignIn",
-        Account: "",
-        SignIn: true,
-      },
-      options: {
-        expire: 5,
-        signinToValidate: true,
-        multisign: false,
-      },
-    });
+      };
+    }
 
+    const payload = await xumm.payload.create(body);
     return NextResponse.json(payload);
   } catch (error) {
     console.error("Erreur lors de la création du payload:", error);

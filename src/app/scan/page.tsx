@@ -143,6 +143,8 @@ const WATCH_DATA: ProductPassportType = {
     reach: true,
     rohs: true,
   },
+  certificationTxID:
+    "A8AB75A0BEC689B80480634D98333080C3144EE004B66E55D42B497B585319D7",
 };
 
 export default function ScanPage() {
@@ -183,7 +185,11 @@ export default function ScanPage() {
           <WalletConnect />
         </div>
 
-        <ProductPassport data={WATCH_DATA} connectedAddress={address} />
+        <ProductPassport
+          data={WATCH_DATA}
+          connectedAddress={address}
+          productId={nftId || "nft001"}
+        />
       </div>
     </main>
   );
