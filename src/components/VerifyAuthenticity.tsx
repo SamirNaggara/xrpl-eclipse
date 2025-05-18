@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Client } from "xrpl";
 
 interface XRPLTransaction {
@@ -27,6 +27,23 @@ interface VerificationStatus {
 export function VerifyAuthenticity({ txID }: VerifyAuthenticityProps) {
   const [isVerifying, setIsVerifying] = useState(false);
   const [status, setStatus] = useState<VerificationStatus | null>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setStatus(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   if (!txID) {
     return (
@@ -171,7 +188,10 @@ export function VerifyAuthenticity({ txID }: VerifyAuthenticityProps) {
       </button>
 
       {status && (
-        <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-lg border p-4 z-10">
+        <div
+          ref={popupRef}
+          className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-lg border p-4 z-10"
+        >
           <div
             className={`text-sm font-medium mb-2 ${
               status.isVerified ? "text-green-700" : "text-red-700"
