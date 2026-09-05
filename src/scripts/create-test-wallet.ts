@@ -1,4 +1,4 @@
-import { Client, Wallet } from "xrpl";
+import { Client } from "xrpl";
 
 async function main() {
   console.log("Création d'un wallet de test...");

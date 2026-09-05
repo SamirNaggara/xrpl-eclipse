@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
 export interface ProductData {
+  certificationTxID?: string;
   public: {
     brand: string;
     model: string;
@@ -19,7 +20,7 @@ export interface CertificationResult {
 }
 
 export class CertificationService {
-  static generateHash(data: any): string {
+  static generateHash(data: unknown): string {
     return crypto
       .createHash("sha256")
       .update(JSON.stringify(data))

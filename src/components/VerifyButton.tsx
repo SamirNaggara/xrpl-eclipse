@@ -18,7 +18,7 @@ export default function VerifyButton({
       onClick={handleVerification}
       className={`bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors ${className}`}
     >
-      Vérifier l'authenticité
+      Vérifier l&apos;authenticité
     </button>
   );
 }

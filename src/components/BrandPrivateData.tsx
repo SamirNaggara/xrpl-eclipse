@@ -111,7 +111,7 @@ export function BrandPrivateData({ data }: BrandPrivateDataProps) {
               </div>
               <div>
                 <p className="text-sm font-medium text-violet-800">
-                  Consommation d'eau
+                  Consommation d&apos;eau
                 </p>
                 <p className="mt-1 text-violet-700">
                   {data.manufacturingProcess.waterUsage} L
@@ -120,7 +120,7 @@ export function BrandPrivateData({ data }: BrandPrivateDataProps) {
               {data.manufacturingProcess.energyConsumption && (
                 <div>
                   <p className="text-sm font-medium text-violet-800">
-                    Consommation d'énergie
+                    Consommation d&apos;énergie
                   </p>
                   <p className="mt-1 text-violet-700">
                     {data.manufacturingProcess.energyConsumption} kWh

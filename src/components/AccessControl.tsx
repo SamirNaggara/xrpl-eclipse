@@ -85,7 +85,7 @@ export function AccessControl() {
 
       <div className="mt-8">
         <h4 className="text-sm font-medium text-gray-900 mb-4">
-          Droits d'accès pour :{" "}
+          Droits d&apos;accès pour :{" "}
           {ACCESS_LEVELS.find((l) => l.id === selectedLevel)?.name}
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

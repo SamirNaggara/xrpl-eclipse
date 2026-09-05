@@ -162,7 +162,7 @@ export default function ScanPage() {
               Produit non trouvé
             </h2>
             <p className="mt-2 text-gray-600">
-              Le produit avec l'identifiant {nftId} n'existe pas dans notre base
+              Le produit avec l&apos;identifiant {nftId} n&apos;existe pas dans notre base
               de données.
             </p>
           </div>

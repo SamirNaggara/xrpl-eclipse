@@ -156,9 +156,10 @@ class XRPLService {
       const signed = this.wallet.sign(prepared);
       const result = await this.client.submitAndWait(signed.tx_blob);
 
-      if (result.result.meta.TransactionResult !== "tesSUCCESS") {
+      const meta = result.result.meta as { TransactionResult?: string } | undefined;
+      if (meta?.TransactionResult !== "tesSUCCESS") {
         throw new Error(
-          `Transaction échouée: ${result.result.meta.TransactionResult}`
+          `Transaction échouée: ${meta?.TransactionResult ?? "meta manquante"}`
         );
       }
     } catch (error) {
