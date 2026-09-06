@@ -1,6 +1,7 @@
 # Certification de Produits sur XRPL
 
 > **Projet lauréat du XRPL Commons Hackathon, Paris, mai 2025** (retenu par le jury parmi 14 projets).
+> Démo : https://xrpl-eclipse.vercel.app
 > Réalisé en deux jours. Le livrable : permettre à une marque de créer une identité numérique pour chacun de ses produits sur le XRP Ledger, et relier données off-chain et on-chain.
 
 Une application Next.js permettant de certifier l'authenticité des produits en utilisant la blockchain XRPL (XRP Ledger) via des NFTokens. Cette solution offre une traçabilité transparente et immuable pour la certification des produits. À terme, le projet évoluera vers l'utilisation des mpTokens (Multi-Purpose Tokens) pour offrir des fonctionnalités avancées de certification.
