@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   CertificationService,
@@ -10,7 +10,7 @@ import { useXRPLWallet } from "@/hooks/useXRPLWallet";
 import { WalletConnect } from "@/components/WalletConnect";
 import { ProductService } from "@/services/products";
 
-export default function CertifyPage() {
+function CertifyPageInner() {
   const router = useRouter();
   const { address } = useXRPLWallet();
   const searchParams = useSearchParams();
@@ -276,5 +276,13 @@ export default function CertifyPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CertifyPage() {
+  return (
+    <Suspense fallback={null}>
+      <CertifyPageInner />
+    </Suspense>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { ProductPassport } from "@/components/ProductPassport";
 import { WalletConnect } from "@/components/WalletConnect";
 import { useXRPLWallet } from "@/hooks/useXRPLWallet";
@@ -147,7 +149,7 @@ const WATCH_DATA: ProductPassportType = {
     "A8AB75A0BEC689B80480634D98333080C3144EE004B66E55D42B497B585319D7",
 };
 
-export default function ScanPage() {
+function ScanPageInner() {
   const { address } = useXRPLWallet();
   const searchParams = useSearchParams();
   const nftId = searchParams.get("id");
@@ -192,5 +194,13 @@ export default function ScanPage() {
         />
       </div>
     </main>
+  );
+}
+
+export default function ScanPage() {
+  return (
+    <Suspense fallback={null}>
+      <ScanPageInner />
+    </Suspense>
   );
 }
